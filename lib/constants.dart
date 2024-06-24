@@ -7,8 +7,9 @@ Color secondaryColor = const Color(0xFF172B4D);
 Color thirdColor = const Color(0xFF7A869A);
 Color white = const Color(0xFFFFFFFF);
 Color blackColor = Colors.black;
-Color darkGrey = Colors.grey;
-Color grey = const Color(0XFFEBECF0);
+Color darkGrey = greyColor.withOpacity(0.13);
+Color greyColor = const Color(0x44C2C2C2);
+Color secondGreyColor = const Color(0XFFEBECF0);
 Color redColor = Colors.red;
 
 // Fonts Used --------------------------------------------------------------------------
