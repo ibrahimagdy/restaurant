@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restaurant/core/utils/theme.dart';
+import 'package:restaurant/view/auth/login_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -51,11 +52,16 @@ class IntroScreen extends StatelessWidget {
                 child: SvgPicture.asset("assets/icons/next_button.svg"),
               ),
               const SizedBox(height: 30),
-              Text(
-                'Skip',
-                style: theme().textTheme.titleMedium!.copyWith(
-                      color: Colors.white.withOpacity(0.5),
-                    ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, LoginScreen.id);
+                },
+                child: Text(
+                  'Skip',
+                  style: theme().textTheme.titleMedium!.copyWith(
+                        color: Colors.white.withOpacity(0.5),
+                      ),
+                ),
               ),
               const Spacer(flex: 1),
             ],

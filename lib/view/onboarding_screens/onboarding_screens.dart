@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant/constants.dart';
 import 'package:restaurant/core/utils/theme.dart';
+import 'package:restaurant/core/widgets/custom_button.dart';
 
+import '../auth/login_screen.dart';
 import 'onboarding_content.dart';
 
 class OnboardingScreens extends StatefulWidget {
   static const String id = 'OnboardingScreens';
 
-  const OnboardingScreens({Key? key}) : super(key: key);
+  const OnboardingScreens({super.key});
 
   @override
   State<OnboardingScreens> createState() => OnBoardingScreenState();
@@ -64,22 +66,18 @@ class OnBoardingScreenState extends State<OnboardingScreens> {
                         ),
                       ),
                       const Spacer(flex: 2),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 60,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryColor),
-                          onPressed: () {
-                            if (currentIndex == contents.length - 1) {}
-                            controller.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.linear,
-                            );
-                          },
-                          child: Text("Get Started",
-                              style: theme().textTheme.bodyLarge),
-                        ),
+                      CustomButton(
+                        buttonText: 'Get Started',
+                        onTap: () {
+                          if (currentIndex == contents.length - 1) {
+                            Navigator.pushReplacementNamed(
+                                context, LoginScreen.id);
+                          }
+                          controller.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.linear,
+                          );
+                        },
                       ),
                       const Spacer(flex: 2),
                     ],
@@ -101,7 +99,7 @@ class OnBoardingScreenState extends State<OnboardingScreens> {
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? primaryColor : grey,
+        color: currentIndex == index ? primaryColor : secondGreyColor,
       ),
     );
   }
