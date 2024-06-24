@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restaurant/core/widgets/custom_button.dart';
 
-import '../../core/utils/theme.dart';
-import '../../core/widgets/custom_phone_number_field.dart';
-import '../../core/widgets/verify_phone_number_screen.dart';
+import '../../../core/utils/theme.dart';
+import '../../../core/widgets/custom_phone_number_field.dart';
+import 'verify_phone_number_screen.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
   static const String id = 'PhoneNumberScreen';

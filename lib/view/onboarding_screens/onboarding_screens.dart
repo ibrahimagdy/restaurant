@@ -3,7 +3,7 @@ import 'package:restaurant/constants.dart';
 import 'package:restaurant/core/utils/theme.dart';
 import 'package:restaurant/core/widgets/custom_button.dart';
 
-import '../auth/login_screen.dart';
+import '../auth/authentication/login_screen.dart';
 import 'onboarding_content.dart';
 
 class OnboardingScreens extends StatefulWidget {
