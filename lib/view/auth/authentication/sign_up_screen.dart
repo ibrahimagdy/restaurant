@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:restaurant/constants.dart';
-import 'package:restaurant/core/widgets/custom_button.dart';
-import 'package:restaurant/core/widgets/custom_sign_in_button.dart';
-import 'package:restaurant/core/widgets/custom_text_form_field.dart';
-import 'package:restaurant/view/auth/sign_up_screen.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:restaurant/view/auth/authentication/login_screen.dart';
+import 'package:restaurant/view/auth/phone_number/phone_number_screen.dart';
 
-import '../../core/utils/theme.dart';
+import '../../../constants.dart';
+import '../../../core/utils/theme.dart';
+import '../../../core/widgets/custom_button.dart';
+import '../../../core/widgets/custom_sign_in_button.dart';
+import '../../../core/widgets/custom_text_form_field.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String id = 'LoginScreen';
+class SignUpScreen extends StatefulWidget {
+  static const String id = 'SignUpScreen';
 
-  const LoginScreen({super.key});
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isPasswordVisible = false;
@@ -37,9 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SvgPicture.asset("assets/icons/Logo.svg"),
-              SizedBox(height: mediaQuery.height * 0.04),
+              SizedBox(height: mediaQuery.height * 0.03),
               Text(
-                'Welcome Back',
+                'Hello! Create Account',
                 textAlign: TextAlign.center,
                 style: theme().textTheme.displaySmall,
               ),
@@ -54,16 +56,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Or ',
+                    'Already have an account? ',
                     textAlign: TextAlign.center,
                     style: theme().textTheme.titleSmall,
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, SignUpScreen.id);
+                      Navigator.pushNamed(context, LoginScreen.id);
                     },
                     child: Text(
-                      'Create new account',
+                      'Sign in',
                       textAlign: TextAlign.center,
                       style: theme().textTheme.titleSmall!.copyWith(
                             color: primaryColor,
@@ -72,7 +74,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: mediaQuery.height * 0.04),
+              SizedBox(height: mediaQuery.height * 0.02),
+              CustomTextFormField(
+                context: context,
+                controller: nameController,
+                hintText: 'Your name',
+              ),
+              const SizedBox(height: 10),
               CustomTextFormField(
                 context: context,
                 controller: emailController,
@@ -96,13 +104,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(height: mediaQuery.height * 0.025),
-              const CustomButton(buttonText: 'Sign in'),
-              SizedBox(height: mediaQuery.height * 0.025),
-              Text(
-                'Forgot Password?',
-                textAlign: TextAlign.center,
-                style:
-                    theme().textTheme.titleSmall!.copyWith(color: primaryColor),
+              CustomButton(
+                buttonText: 'Sign up',
+                onTap: () {
+                  Navigator.pushNamed(context, PhoneNumberScreen.id);
+                },
               ),
               SizedBox(height: mediaQuery.height * 0.025),
               Row(

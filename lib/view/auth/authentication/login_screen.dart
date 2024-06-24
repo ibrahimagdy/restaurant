@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:restaurant/view/auth/login_screen.dart';
-import 'package:restaurant/view/auth/phone_number_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:restaurant/constants.dart';
+import 'package:restaurant/core/widgets/custom_button.dart';
+import 'package:restaurant/core/widgets/custom_sign_in_button.dart';
+import 'package:restaurant/core/widgets/custom_text_form_field.dart';
+import 'package:restaurant/view/auth/authentication/sign_up_screen.dart';
+import 'package:restaurant/view/auth/forget_password/password_recovery_screen.dart';
 
-import '../../constants.dart';
-import '../../core/utils/theme.dart';
-import '../../core/widgets/custom_button.dart';
-import '../../core/widgets/custom_sign_in_button.dart';
-import '../../core/widgets/custom_text_form_field.dart';
+import '../../../core/utils/theme.dart';
 
-class SignUpScreen extends StatefulWidget {
-  static const String id = 'SignUpScreen';
+class LoginScreen extends StatefulWidget {
+  static const String id = 'LoginScreen';
 
-  const SignUpScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController nameController = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isPasswordVisible = false;
@@ -39,9 +38,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SvgPicture.asset("assets/icons/Logo.svg"),
-              SizedBox(height: mediaQuery.height * 0.03),
+              SizedBox(height: mediaQuery.height * 0.04),
               Text(
-                'Hello! Create Account',
+                'Welcome Back',
                 textAlign: TextAlign.center,
                 style: theme().textTheme.displaySmall,
               ),
@@ -56,16 +55,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Already have an account? ',
+                    'Or ',
                     textAlign: TextAlign.center,
                     style: theme().textTheme.titleSmall,
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, LoginScreen.id);
+                      Navigator.pushNamed(context, SignUpScreen.id);
                     },
                     child: Text(
-                      'Sign in',
+                      'Create new account',
                       textAlign: TextAlign.center,
                       style: theme().textTheme.titleSmall!.copyWith(
                             color: primaryColor,
@@ -74,13 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: mediaQuery.height * 0.02),
-              CustomTextFormField(
-                context: context,
-                controller: nameController,
-                hintText: 'Your name',
-              ),
-              const SizedBox(height: 10),
+              SizedBox(height: mediaQuery.height * 0.04),
               CustomTextFormField(
                 context: context,
                 controller: emailController,
@@ -104,13 +97,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               SizedBox(height: mediaQuery.height * 0.025),
-              CustomButton(
-                buttonText: 'Sign up',
-                onTap: () {
-                  Navigator.pushNamed(context, PhoneNumberScreen.id);
+              const CustomButton(buttonText: 'Sign in'),
+              SizedBox(height: mediaQuery.height * 0.01),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, PasswordRecoveryScreen.id);
                 },
+                child: Text(
+                  'Forgot Password?',
+                  textAlign: TextAlign.center,
+                  style: theme()
+                      .textTheme
+                      .titleSmall!
+                      .copyWith(color: primaryColor),
+                ),
               ),
-              SizedBox(height: mediaQuery.height * 0.025),
+              SizedBox(height: mediaQuery.height * 0.01),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

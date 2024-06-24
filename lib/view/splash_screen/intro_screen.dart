@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restaurant/core/utils/theme.dart';
-import 'package:restaurant/view/auth/login_screen.dart';
+import 'package:restaurant/view/auth/authentication/login_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
 
 class IntroScreen extends StatelessWidget {
