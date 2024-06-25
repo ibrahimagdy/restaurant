@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:restaurant/view/auth/authentication/login_screen.dart';
 import 'package:restaurant/view/auth/authentication/sign_up_screen.dart';
 import 'package:restaurant/view/auth/forget_password/password_recovery_screen.dart';
+import 'package:restaurant/view/auth/forget_password/reset_password_screen.dart';
 import 'package:restaurant/view/auth/forget_password/verify_identity_screen.dart';
+import 'package:restaurant/view/auth/location/current_location_screen.dart';
+import 'package:restaurant/view/auth/location/enter_new_address_screen.dart';
 import 'package:restaurant/view/auth/phone_number/phone_number_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
 import 'package:restaurant/view/splash_screen/intro_screen.dart';
@@ -20,4 +23,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   VerifyPhoneNumberScreen.id: (context) => const VerifyPhoneNumberScreen(),
   PasswordRecoveryScreen.id: (context) => const PasswordRecoveryScreen(),
   VerifyIdentityScreen.id: (context) => const VerifyIdentityScreen(),
+  CurrentLocationScreen.id: (context) => const CurrentLocationScreen(),
+  EnterNewAddressScreen.id: (context) => const EnterNewAddressScreen(),
+  ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
 };
