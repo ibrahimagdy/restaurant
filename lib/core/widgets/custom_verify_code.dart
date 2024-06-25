@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -36,6 +38,11 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
   final List<Color> dividerColors = List<Color>.filled(4, thirdColor);
 
   bool invalidOtp = false;
+  bool isSendAgainButtonEnabled = false;
+  int resendTime = 60;
+  late Timer countdownTimer;
+
+  String strFormatting(n) => n.toString().padLeft(2, '0');
 
   void verifyOtp() {
     String enteredOtp = digit1Controller.text +
@@ -43,9 +50,7 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
         digit3Controller.text +
         digit4Controller.text;
     if (enteredOtp == widget.expectedOtp) {
-      setState(() {
-        invalidOtp = false;
-      });
+      stopTimer();
       if (widget.onNextTap != null) {
         widget.onNextTap!();
       }
@@ -54,6 +59,32 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
         invalidOtp = true;
       });
     }
+  }
+
+  startTimer() {
+    countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        resendTime--;
+      });
+      if (resendTime < 1) {
+        countdownTimer.cancel();
+        setState(() {
+          isSendAgainButtonEnabled = true;
+        });
+      }
+    });
+  }
+
+  stopTimer() {
+    if (countdownTimer.isActive) {
+      countdownTimer.cancel();
+    }
+  }
+
+  @override
+  void initState() {
+    startTimer();
+    super.initState();
   }
 
   @override
@@ -105,7 +136,25 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
             buttonText: widget.sendAgainButtonText,
             buttonColor: greyColor,
             textColor: Colors.black,
+            onTap: isSendAgainButtonEnabled
+                ? () {
+                    setState(() {
+                      invalidOtp = false;
+                      resendTime = 60;
+                      isSendAgainButtonEnabled = false;
+                      startTimer();
+                    });
+                  }
+                : null,
           ),
+          SizedBox(height: mediaQuery.height * 0.02),
+          resendTime != 0
+              ? Text(
+                  'You can resend verify code after ${strFormatting(resendTime)} seconds',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.titleSmall,
+                )
+              : const SizedBox(),
           if (widget.showTerms) ...[
             SizedBox(height: mediaQuery.height * 0.03),
             Text(
