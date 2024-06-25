@@ -12,6 +12,7 @@ class VerifyCodeWidget extends StatefulWidget {
   final String sendAgainButtonText;
   final bool showTerms;
   final VoidCallback? onNextTap;
+  final String expectedOtp;
 
   const VerifyCodeWidget({
     super.key,
@@ -20,6 +21,7 @@ class VerifyCodeWidget extends StatefulWidget {
     required this.sendAgainButtonText,
     this.showTerms = true,
     this.onNextTap,
+    required this.expectedOtp,
   });
 
   @override
@@ -31,62 +33,27 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
   final TextEditingController digit2Controller = TextEditingController();
   final TextEditingController digit3Controller = TextEditingController();
   final TextEditingController digit4Controller = TextEditingController();
+  final List<Color> dividerColors = List<Color>.filled(4, thirdColor);
 
-  final FocusNode digit1FocusNode = FocusNode();
-  final FocusNode digit2FocusNode = FocusNode();
-  final FocusNode digit3FocusNode = FocusNode();
-  final FocusNode digit4FocusNode = FocusNode();
+  bool invalidOtp = false;
 
-  Color digit1DividerColor = primaryColor;
-  Color digit2DividerColor = thirdColor;
-  Color digit3DividerColor = thirdColor;
-  Color digit4DividerColor = thirdColor;
-
-  @override
-  void initState() {
-    super.initState();
-    digit1Controller.addListener(() {
-      if (digit1Controller.text.length == 1) {
-        FocusScope.of(context).requestFocus(digit2FocusNode);
-        setState(() {
-          digit2DividerColor = primaryColor;
-        });
+  void verifyOtp() {
+    String enteredOtp = digit1Controller.text +
+        digit2Controller.text +
+        digit3Controller.text +
+        digit4Controller.text;
+    if (enteredOtp == widget.expectedOtp) {
+      setState(() {
+        invalidOtp = false;
+      });
+      if (widget.onNextTap != null) {
+        widget.onNextTap!();
       }
-    });
-    digit2Controller.addListener(() {
-      if (digit2Controller.text.length == 1) {
-        FocusScope.of(context).requestFocus(digit3FocusNode);
-        setState(() {
-          digit3DividerColor = primaryColor;
-        });
-      }
-    });
-    digit3Controller.addListener(() {
-      if (digit3Controller.text.length == 1) {
-        FocusScope.of(context).requestFocus(digit4FocusNode);
-        setState(() {
-          digit4DividerColor = primaryColor;
-        });
-      }
-    });
-    digit4Controller.addListener(() {
-      if (digit4Controller.text.length == 1) {
-        digit4FocusNode.unfocus();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    digit1Controller.dispose();
-    digit2Controller.dispose();
-    digit3Controller.dispose();
-    digit4Controller.dispose();
-    digit1FocusNode.dispose();
-    digit2FocusNode.dispose();
-    digit3FocusNode.dispose();
-    digit4FocusNode.dispose();
-    super.dispose();
+    } else {
+      setState(() {
+        invalidOtp = true;
+      });
+    }
   }
 
   @override
@@ -115,20 +82,23 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildDigitField(
-                  digit1Controller, digit1FocusNode, digit1DividerColor),
-              _buildDigitField(
-                  digit2Controller, digit2FocusNode, digit2DividerColor),
-              _buildDigitField(
-                  digit3Controller, digit3FocusNode, digit3DividerColor),
-              _buildDigitField(
-                  digit4Controller, digit4FocusNode, digit4DividerColor),
+              buildDigitField(digit1Controller, 0),
+              buildDigitField(digit2Controller, 1),
+              buildDigitField(digit3Controller, 2),
+              buildDigitField(digit4Controller, 3),
             ],
           ),
           SizedBox(height: mediaQuery.height * 0.04),
+          if (invalidOtp)
+            const Text(
+              'Invalid Verify Code',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.red),
+            ),
+          SizedBox(height: mediaQuery.height * 0.02),
           CustomButton(
             buttonText: 'Next',
-            onTap: widget.onNextTap,
+            onTap: verifyOtp,
           ),
           SizedBox(height: mediaQuery.height * 0.02),
           CustomButton(
@@ -155,8 +125,7 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
     );
   }
 
-  Widget _buildDigitField(TextEditingController controller, FocusNode focusNode,
-      Color dividerColor) {
+  Widget buildDigitField(TextEditingController controller, int index) {
     return Container(
       decoration: BoxDecoration(
         color: greyColor,
@@ -166,16 +135,24 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
       height: 75,
       child: Stack(
         children: [
-          Center(
+          Align(
+            alignment: Alignment.center,
             child: TextFormField(
               controller: controller,
-              focusNode: focusNode,
+              maxLength: 1,
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly,
               ],
-              maxLength: 1,
+              onChanged: (value) {
+                if (value.length == 1) {
+                  FocusScope.of(context).nextFocus();
+                  setState(() {
+                    dividerColors[index] = primaryColor;
+                  });
+                }
+              },
               decoration: InputDecoration(
                 counterText: '',
                 border: buildBorder(),
@@ -189,7 +166,7 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
             left: 0,
             right: 0,
             child: Divider(
-              color: dividerColor,
+              color: dividerColors[index],
               indent: 15,
               endIndent: 15,
               thickness: 2,
