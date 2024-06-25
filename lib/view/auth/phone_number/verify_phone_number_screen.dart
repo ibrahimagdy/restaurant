@@ -23,7 +23,7 @@ class VerifyPhoneNumberScreen extends StatelessWidget {
           showTerms: true,
           expectedOtp: '1234',
           onNextTap: () {
-            Navigator.pushNamed(context, CurrentLocationScreen.id);
+            Navigator.pushReplacementNamed(context, CurrentLocationScreen.id);
           },
         ),
       ),

@@ -23,7 +23,7 @@ class VerifyIdentityScreen extends StatelessWidget {
           expectedOtp: '1234',
           showTerms: false,
           onNextTap: () {
-            Navigator.pushNamed(context, ResetPasswordScreen.id);
+            Navigator.pushReplacementNamed(context, ResetPasswordScreen.id);
           },
         ),
       ),
