@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:restaurant/core/widgets/custom_button.dart';
 import 'package:restaurant/core/widgets/custom_text_form_field.dart';
 
 import '../../../core/utils/theme.dart';
@@ -15,6 +16,7 @@ class EnterNewAddressScreen extends StatefulWidget {
 
 class _EnterNewAddressScreenState extends State<EnterNewAddressScreen> {
   TextEditingController addressController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,32 +29,44 @@ class _EnterNewAddressScreenState extends State<EnterNewAddressScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SvgPicture.asset("assets/icons/location.svg"),
-              SizedBox(height: mediaQuery.height * 0.04),
-              Text(
-                'Find Nearby Restaurants',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.displaySmall,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'Enter your location or allow access to your\nlocation to find restaurants near you.',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.titleSmall,
-              ),
-              SizedBox(height: mediaQuery.height * 0.04),
-              CustomTextFormField(
-                context: context,
-                controller: addressController,
-                prefixIcon: SvgPicture.asset(
-                  "assets/icons/address_icon.svg",
-                  fit: BoxFit.scaleDown,
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SvgPicture.asset("assets/icons/location.svg"),
+                SizedBox(height: mediaQuery.height * 0.04),
+                Text(
+                  'Find Nearby Restaurants',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.displaySmall,
                 ),
-              ),
-            ],
+                const SizedBox(height: 10),
+                Text(
+                  'Enter your location or allow access to your\nlocation to find restaurants near you.',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.titleSmall,
+                ),
+                SizedBox(height: mediaQuery.height * 0.04),
+                CustomTextFormField(
+                  context: context,
+                  controller: addressController,
+                  prefixIcon: SvgPicture.asset(
+                    "assets/icons/address_icon.svg",
+                    fit: BoxFit.scaleDown,
+                  ),
+                ),
+                SizedBox(height: mediaQuery.height * 0.09),
+                CustomButton(
+                  buttonText: 'Go To Home',
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pushNamed(context, '');
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
