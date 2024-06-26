@@ -39,15 +39,17 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: screens[selectedIndex],
       bottomNavigationBar: Container(
-        height: 120,
+        height: 115,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: greyColor,
+              color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
-              blurRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, -1),
             ),
           ],
         ),
@@ -59,7 +61,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           child: BottomNavigationBar(
             currentIndex: selectedIndex,
             onTap: onItemTapped,
-            iconSize: 32,
+            iconSize: 30,
             selectedItemColor: primaryColor,
             unselectedItemColor: greyColor,
             type: BottomNavigationBarType.fixed,

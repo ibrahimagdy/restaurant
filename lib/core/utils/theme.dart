@@ -92,27 +92,21 @@ ThemeData theme() {
         height: 1.5, // Leading point of 18px (18/12)
       ),
       // Label Large
-      bodySmall: GoogleFonts.inter(
+      bodySmall: GoogleFonts.dmSans(
         fontSize: 16,
-        fontWeight: FontWeight.normal,
-        color: Colors.white,
-        letterSpacing: 0,
-        height: 1.5, // Leading point of 24px (24/16)
+        fontWeight: FontWeight.bold,
       ),
       // Label Medium
-      labelMedium: GoogleFonts.inter(
+      labelMedium: GoogleFonts.dmSans(
         fontSize: 14,
-        fontWeight: FontWeight.normal,
-        color: Colors.white,
-        letterSpacing: 0,
-        height: 1.29, // Leading point of 18px (18/14)
+        fontWeight: FontWeight.bold,
+        color: secondaryColor,
       ),
       // Label Small
-      labelSmall: GoogleFonts.tajawal(
+      labelSmall: GoogleFonts.dmSans(
         fontSize: 12,
         fontWeight: FontWeight.normal,
         color: primaryColor,
-        letterSpacing: 0,
       ),
     ),
     appBarTheme: AppBarTheme(
