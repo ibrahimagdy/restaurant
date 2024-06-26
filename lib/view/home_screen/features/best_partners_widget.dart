@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants.dart';
+import '../../../core/functions/show_bottom_sheet.dart';
 import '../../../core/utils/theme.dart';
 import '../../../model/best_partners_model.dart';
 
@@ -32,12 +33,15 @@ class BestPartnersWidget extends StatelessWidget {
                       .bodySmall!
                       .copyWith(color: secondaryColor),
                 ),
-                Text(
-                  'See all',
-                  style: theme()
-                      .textTheme
-                      .labelMedium!
-                      .copyWith(fontWeight: FontWeight.w300),
+                GestureDetector(
+                  onTap: () => showAllPartners(context),
+                  child: Text(
+                    'See all',
+                    style: theme()
+                        .textTheme
+                        .labelMedium!
+                        .copyWith(fontWeight: FontWeight.w300),
+                  ),
                 ),
               ],
             ),
