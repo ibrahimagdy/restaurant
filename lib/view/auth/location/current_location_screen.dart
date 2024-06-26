@@ -44,6 +44,7 @@ class CurrentLocationScreen extends StatelessWidget {
                 buttonText: 'Use current location',
                 buttonColor: greyColor,
                 textColor: const Color(0xFF172B4D),
+                onTap: () {},
               ),
               const SizedBox(height: 10),
               CustomSignInButton(

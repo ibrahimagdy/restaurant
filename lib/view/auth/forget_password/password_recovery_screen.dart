@@ -17,6 +17,7 @@ class PasswordRecoveryScreen extends StatefulWidget {
 
 class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
   TextEditingController emailController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,37 +30,42 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: mediaQuery.height * 0.04),
-              SvgPicture.asset("assets/icons/Logo.svg"),
-              SizedBox(height: mediaQuery.height * 0.04),
-              Text(
-                'Password Recovery',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.displaySmall,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'Enter your email to recover your password',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.titleSmall,
-              ),
-              SizedBox(height: mediaQuery.height * 0.04),
-              CustomTextFormField(
-                context: context,
-                controller: emailController,
-                hintText: 'Email',
-              ),
-              SizedBox(height: mediaQuery.height * 0.03),
-              CustomButton(
-                buttonText: 'Sign in',
-                onTap: () {
-                  Navigator.pushNamed(context, VerifyIdentityScreen.id);
-                },
-              ),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(height: mediaQuery.height * 0.04),
+                SvgPicture.asset("assets/icons/Logo.svg"),
+                SizedBox(height: mediaQuery.height * 0.04),
+                Text(
+                  'Password Recovery',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.displaySmall,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Enter your email to recover your password',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.titleSmall,
+                ),
+                SizedBox(height: mediaQuery.height * 0.04),
+                CustomTextFormField(
+                  context: context,
+                  controller: emailController,
+                  hintText: 'Email',
+                ),
+                SizedBox(height: mediaQuery.height * 0.03),
+                CustomButton(
+                  buttonText: 'Sign in',
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pushNamed(context, VerifyIdentityScreen.id);
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
