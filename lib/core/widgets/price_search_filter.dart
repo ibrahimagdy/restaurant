@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constants.dart';
-import '../../../../core/utils/theme.dart';
+import '../../constants.dart';
+import '../utils/theme.dart';
 
 class PriceSearchFilter extends StatefulWidget {
   const PriceSearchFilter({super.key});

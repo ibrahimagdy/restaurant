@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:restaurant/core/widgets/custom_button.dart';
 
-import '../../../../constants.dart';
-import '../../../../core/utils/theme.dart';
-import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../constants.dart';
+import '../utils/theme.dart';
 import 'category_search_filter.dart';
+import 'custom_text_form_field.dart';
 import 'price_search_filter.dart';
 import 'sort_by_search_filter.dart';
 
@@ -146,7 +146,7 @@ class _CustomTopModalSheetState extends State<CustomTopModalSheet>
                     child: TabBarView(
                       controller: tabController,
                       children: [
-                        buildTabContent(const CategorySearchFilter()),
+                        buildTabContent(CategorySearchFilter()),
                         buildTabContent(const SortBySearchFilter()),
                         buildTabContent(const PriceSearchFilter()),
                       ],
