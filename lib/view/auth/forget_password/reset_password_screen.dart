@@ -19,6 +19,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   TextEditingController confirmPasswordController = TextEditingController();
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,65 +32,72 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: mediaQuery.height * 0.04),
-              SvgPicture.asset("assets/icons/Logo.svg"),
-              SizedBox(height: mediaQuery.height * 0.04),
-              Text(
-                'Reset your password',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.displaySmall,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'At least 8 characters including uppercase and\nlowercase letters',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.titleSmall,
-              ),
-              SizedBox(height: mediaQuery.height * 0.04),
-              CustomTextFormField(
-                context: context,
-                controller: passwordController,
-                hintText: 'New Password',
-                password: !isPasswordVisible,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(height: mediaQuery.height * 0.04),
+                SvgPicture.asset("assets/icons/Logo.svg"),
+                SizedBox(height: mediaQuery.height * 0.04),
+                Text(
+                  'Reset your password',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.displaySmall,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'At least 8 characters including uppercase and\nlowercase letters',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.titleSmall,
+                ),
+                SizedBox(height: mediaQuery.height * 0.04),
+                CustomTextFormField(
+                  context: context,
+                  controller: passwordController,
+                  hintText: 'New Password',
+                  password: !isPasswordVisible,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isPasswordVisible = !isPasswordVisible;
+                      });
+                    },
                   ),
-                  onPressed: () {
-                    setState(() {
-                      isPasswordVisible = !isPasswordVisible;
-                    });
+                ),
+                const SizedBox(height: 10),
+                CustomTextFormField(
+                  context: context,
+                  controller: confirmPasswordController,
+                  hintText: 'Confirm Password',
+                  password: !isConfirmPasswordVisible,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      isConfirmPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isConfirmPasswordVisible = !isConfirmPasswordVisible;
+                      });
+                    },
+                  ),
+                ),
+                SizedBox(height: mediaQuery.height * 0.03),
+                CustomButton(
+                  buttonText: 'Update',
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {}
                   },
                 ),
-              ),
-              const SizedBox(height: 10),
-              CustomTextFormField(
-                context: context,
-                controller: confirmPasswordController,
-                hintText: 'Confirm Password',
-                password: !isConfirmPasswordVisible,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    isConfirmPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      isConfirmPasswordVisible = !isConfirmPasswordVisible;
-                    });
-                  },
-                ),
-              ),
-              SizedBox(height: mediaQuery.height * 0.03),
-              CustomButton(
-                buttonText: 'Update',
-                onTap: () {},
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

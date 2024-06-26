@@ -4,6 +4,7 @@ import 'package:restaurant/core/widgets/custom_button.dart';
 import 'package:restaurant/core/widgets/custom_text_form_field.dart';
 
 import '../../../core/utils/theme.dart';
+import '../../home_layout/home_layout.dart';
 
 class EnterNewAddressScreen extends StatefulWidget {
   static const String id = 'EnterNewAddressScreen';
@@ -61,7 +62,7 @@ class _EnterNewAddressScreenState extends State<EnterNewAddressScreen> {
                   buttonText: 'Go To Home',
                   onTap: () {
                     if (formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, '');
+                      Navigator.pushReplacementNamed(context, HomeLayout.id);
                     }
                   },
                 ),
