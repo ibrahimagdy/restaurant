@@ -42,12 +42,10 @@ ThemeData theme() {
         height: 1.36, // Leading point of 30px (30/22)
       ),
       // Headline Large
-      headlineSmall: GoogleFonts.inter(
+      headlineSmall: GoogleFonts.dmSans(
         fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-        letterSpacing: 0,
-        height: 1.3, // Leading point of 26px (26/20)
+        fontWeight: FontWeight.normal,
+        color: secondaryColor,
       ),
       // Headline Small
       titleLarge: GoogleFonts.inter(
