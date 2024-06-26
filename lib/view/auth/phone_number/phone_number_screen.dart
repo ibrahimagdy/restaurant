@@ -17,6 +17,7 @@ class PhoneNumberScreen extends StatefulWidget {
 
 class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   TextEditingController phoneNumberController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,36 +30,50 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(height: mediaQuery.height * 0.03),
-              SvgPicture.asset("assets/icons/Logo.svg"),
-              SizedBox(height: mediaQuery.height * 0.05),
-              Text(
-                'Get started with Cook',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.displaySmall,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'Enter your phone number',
-                textAlign: TextAlign.center,
-                style: theme().textTheme.titleSmall,
-              ),
-              SizedBox(height: mediaQuery.height * 0.05),
-              CustomPhoneNumberField(
-                controller: phoneNumberController,
-                onPhoneNumberChanged: (number) {},
-              ),
-              SizedBox(height: mediaQuery.height * 0.04),
-              CustomButton(
-                buttonText: 'Next',
-                onTap: () {
-                  Navigator.pushNamed(context, VerifyPhoneNumberScreen.id);
-                },
-              ),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(height: mediaQuery.height * 0.03),
+                SvgPicture.asset("assets/icons/Logo.svg"),
+                SizedBox(height: mediaQuery.height * 0.05),
+                Text(
+                  'Get started with Cook',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.displaySmall,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Enter your phone number',
+                  textAlign: TextAlign.center,
+                  style: theme().textTheme.titleSmall,
+                ),
+                SizedBox(height: mediaQuery.height * 0.05),
+                CustomPhoneNumberField(
+                  controller: phoneNumberController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your phone number';
+                    }
+                    if (!RegExp(r'^\+?[1-9]\d{1,14}$').hasMatch(value)) {
+                      return 'Please enter a valid phone number';
+                    }
+                    return null;
+                  },
+                  onPhoneNumberChanged: (number) {},
+                ),
+                SizedBox(height: mediaQuery.height * 0.04),
+                CustomButton(
+                  buttonText: 'Next',
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pushNamed(context, VerifyPhoneNumberScreen.id);
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -6,11 +6,14 @@ import 'package:restaurant/core/utils/theme.dart';
 class CustomPhoneNumberField extends StatefulWidget {
   final TextEditingController controller;
   final Function(PhoneNumber) onPhoneNumberChanged;
+  final String? Function(String?)? validator;
 
-  const CustomPhoneNumberField(
-      {super.key,
-      required this.controller,
-      required this.onPhoneNumberChanged});
+  const CustomPhoneNumberField({
+    super.key,
+    required this.controller,
+    required this.onPhoneNumberChanged,
+    this.validator,
+  });
 
   @override
   State<CustomPhoneNumberField> createState() => _CustomPhoneNumberFieldState();
@@ -47,7 +50,7 @@ class _CustomPhoneNumberFieldState extends State<CustomPhoneNumberField> {
               selectorType: PhoneInputSelectorType.DROPDOWN,
             ),
             ignoreBlank: false,
-            autoValidateMode: AutovalidateMode.disabled,
+            autoValidateMode: AutovalidateMode.onUserInteraction,
             selectorTextStyle: const TextStyle(color: Colors.black),
             initialValue: number,
             textFieldController: widget.controller,
@@ -58,6 +61,16 @@ class _CustomPhoneNumberFieldState extends State<CustomPhoneNumberField> {
               border: InputBorder.none,
               hintText: '202 555 0132',
             ),
+            validator: widget.validator ??
+                (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your phone number';
+                  }
+                  if (!RegExp(r'^\+?[1-9]\d{1,14}$').hasMatch(value)) {
+                    return 'Please enter a valid phone number';
+                  }
+                  return null;
+                },
             onSaved: (PhoneNumber number) {},
           ),
         ],
