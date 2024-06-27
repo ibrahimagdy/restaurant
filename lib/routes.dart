@@ -7,6 +7,7 @@ import 'package:restaurant/view/auth/forget_password/verify_identity_screen.dart
 import 'package:restaurant/view/auth/location/current_location_screen.dart';
 import 'package:restaurant/view/auth/location/enter_new_address_screen.dart';
 import 'package:restaurant/view/auth/phone_number/phone_number_screen.dart';
+import 'package:restaurant/view/details_screen/details_screen.dart';
 import 'package:restaurant/view/home_layout/home_layout.dart';
 import 'package:restaurant/view/home_screen/home_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
@@ -34,4 +35,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   HomeScreen.id: (context) => const HomeScreen(),
   OngoingScreen.id: (context) => const OngoingScreen(),
   ProfileScreen.id: (context) => const ProfileScreen(),
+  DetailsScreen.id: (context) => const DetailsScreen(),
 };
