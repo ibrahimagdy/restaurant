@@ -42,7 +42,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       extendBody: true,
       body: screens[selectedIndex],
       bottomNavigationBar: Container(
-        height: 115,
+        height: 100,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(

@@ -51,7 +51,7 @@ class BestPartnersWidget extends StatelessWidget {
           ),
           SizedBox(height: mediaQuery.height * 0.02),
           SizedBox(
-            height: mediaQuery.height * 0.33,
+            height: mediaQuery.height * 0.35,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: bestPartnerModel.length,
