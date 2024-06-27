@@ -48,20 +48,16 @@ ThemeData theme() {
         color: secondaryColor,
       ),
       // Headline Small
-      titleLarge: GoogleFonts.inter(
+      titleLarge: GoogleFonts.dmSans(
         fontSize: 18,
-        fontWeight: FontWeight.normal,
-        color: Colors.black,
-        letterSpacing: 0,
-        //height: 1.33, // Leading point of 24px (24/18)
+        fontWeight: FontWeight.bold,
+        color: secondaryColor,
       ),
       // Subhead Large
-      titleMedium: GoogleFonts.roboto(
+      titleMedium: GoogleFonts.dmSans(
         fontSize: 16,
         fontWeight: FontWeight.normal,
-        color: Colors.white,
-        letterSpacing: 0,
-        //height: 1.25, // Leading point of 20px (20/16)
+        color: secondaryColor,
       ),
       // Subhead Small
       titleSmall: GoogleFonts.dmSans(

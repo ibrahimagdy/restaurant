@@ -57,83 +57,89 @@ class BestPartnersWidget extends StatelessWidget {
               itemCount: bestPartnerModel.length,
               itemBuilder: (context, index) {
                 final partner = bestPartnerModel[index];
-                return Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    color: white,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(partner.image),
-                        ),
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            Text(partner.name,
-                                style: theme().textTheme.headlineSmall),
-                            const SizedBox(width: 5),
-                            SvgPicture.asset("assets/icons/shield-check.svg"),
-                          ],
-                        ),
-                        const SizedBox(height: 3),
-                        Row(
-                          children: [
-                            Text(
-                              partner.state,
-                              style: theme().textTheme.labelSmall!.copyWith(
-                                  color: partner.state == "Open"
-                                      ? const Color(0xFF00875A)
-                                      : Colors.red),
-                            ),
-                            const Text(" . "),
-                            Text(partner.address,
-                                style: theme()
-                                    .textTheme
-                                    .labelSmall!
-                                    .copyWith(color: thirdColor)),
-                          ],
-                        ),
-                        SizedBox(height: mediaQuery.height * 0.013),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: primaryColor,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, partner.onTap,
+                        arguments: bestPartnerModel[index]);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      color: white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.asset(partner.image),
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Text(partner.name,
+                                  style: theme().textTheme.headlineSmall),
+                              const SizedBox(width: 5),
+                              SvgPicture.asset("assets/icons/shield-check.svg"),
+                            ],
+                          ),
+                          const SizedBox(height: 3),
+                          Row(
+                            children: [
+                              Text(
+                                partner.state,
+                                style: theme().textTheme.labelSmall!.copyWith(
+                                    color: partner.state == "Open"
+                                        ? const Color(0xFF00875A)
+                                        : Colors.red),
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 4),
-                              child: Row(
-                                children: [
-                                  const Icon(Icons.star,
-                                      color: Colors.white, size: 16),
-                                  const SizedBox(width: 4),
-                                  Text(partner.rate,
-                                      style: TextStyle(color: white)),
-                                ],
+                              const Text(" . "),
+                              Text(partner.address,
+                                  style: theme()
+                                      .textTheme
+                                      .labelSmall!
+                                      .copyWith(color: thirdColor)),
+                            ],
+                          ),
+                          SizedBox(height: mediaQuery.height * 0.013),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: primaryColor,
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 4),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.star,
+                                        color: Colors.white, size: 16),
+                                    const SizedBox(width: 4),
+                                    Text(partner.rate,
+                                        style: TextStyle(color: white)),
+                                  ],
+                                ),
                               ),
-                            ),
-                            const Text(" . "),
-                            Text(partner.distance,
-                                style: theme()
-                                    .textTheme
-                                    .labelSmall!
-                                    .copyWith(color: secondaryColor)),
-                            const Text(" . "),
-                            Text(partner.shipping,
-                                style: theme()
-                                    .textTheme
-                                    .labelSmall!
-                                    .copyWith(color: secondaryColor)),
-                          ],
-                        ),
-                      ],
+                              const Text(" . "),
+                              Text(partner.distance,
+                                  style: theme()
+                                      .textTheme
+                                      .labelSmall!
+                                      .copyWith(color: secondaryColor)),
+                              const Text(" . "),
+                              Text(partner.shipping,
+                                  style: theme()
+                                      .textTheme
+                                      .labelSmall!
+                                      .copyWith(color: secondaryColor)),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
