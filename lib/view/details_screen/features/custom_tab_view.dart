@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant/constants.dart';
+import 'package:restaurant/view/details_screen/features/review_info_widgets/users_review.dart';
 
 import '../../../core/utils/theme.dart';
 import 'delivery_info_view.dart';
@@ -28,7 +29,7 @@ class CustomTabView extends StatelessWidget {
             child: TabBarView(
               children: [
                 DeliveryInfoView(),
-                Center(child: Text("Review Info")),
+                UsersReview(),
               ],
             ),
           ),
