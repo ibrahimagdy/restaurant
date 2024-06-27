@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:restaurant/core/widgets/custom_button.dart';
 
 import '../../constants.dart';
+import '../../view/home_screen/features/search_view.dart';
 import '../utils/theme.dart';
 import 'category_search_filter.dart';
 import 'custom_text_form_field.dart';
@@ -12,13 +13,13 @@ import 'sort_by_search_filter.dart';
 class CustomTopModalSheet extends StatefulWidget {
   final void Function()? onTap;
   final bool showDivider;
-  final bool showTabs; // New parameter
+  final bool showTabs;
 
   const CustomTopModalSheet({
     super.key,
     this.onTap,
     this.showDivider = false,
-    this.showTabs = true, // Default to true
+    this.showTabs = true,
   });
 
   @override
@@ -60,13 +61,23 @@ class _CustomTopModalSheetState extends State<CustomTopModalSheet>
             SizedBox(height: mediaQuery.height * 0.08),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: CustomTextFormField(
-                context: context,
-                controller: searchController,
-                hintText: 'Search on Coody',
-                prefixIcon: SvgPicture.asset(
-                  "assets/icons/address_icon.svg",
-                  fit: BoxFit.scaleDown,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                  );
+                },
+                child: AbsorbPointer(
+                  child: CustomTextFormField(
+                    context: context,
+                    controller: searchController,
+                    hintText: 'Search on Coody',
+                    prefixIcon: SvgPicture.asset(
+                      "assets/icons/address_icon.svg",
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -146,7 +157,7 @@ class _CustomTopModalSheetState extends State<CustomTopModalSheet>
                     child: TabBarView(
                       controller: tabController,
                       children: [
-                        buildTabContent(CategorySearchFilter()),
+                        buildTabContent(const CategorySearchFilter()),
                         buildTabContent(const SortBySearchFilter()),
                         buildTabContent(const PriceSearchFilter()),
                       ],
