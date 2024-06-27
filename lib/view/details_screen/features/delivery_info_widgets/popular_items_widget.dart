@@ -11,7 +11,7 @@ class PopularItemsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context).size;
     return SizedBox(
-      height: mediaQuery.height * 0.25,
+      height: mediaQuery.height * 0.27,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: popularItems.length,
