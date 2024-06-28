@@ -4,6 +4,8 @@ class FriedChickenModel {
   final String name;
   final String price;
   final String type;
+  final String subtitle;
+  final String orderImage;
 
   FriedChickenModel({
     required this.headerName,
@@ -11,6 +13,8 @@ class FriedChickenModel {
     required this.name,
     required this.price,
     required this.type,
+    required this.subtitle,
+    required this.orderImage,
   });
 }
 
@@ -21,6 +25,8 @@ final List<FriedChickenModel> friedModel = [
     name: "Combo Chicken Crispy",
     price: "\$ 10.15",
     type: "Burger combo",
+    subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
+    orderImage: "assets/images/order_image.png",
   ),
   FriedChickenModel(
     headerName: "Fried Chicken",
@@ -28,6 +34,8 @@ final List<FriedChickenModel> friedModel = [
     name: "Combo Chicken Crispy",
     price: "\$ 10.15",
     type: "Burger combo",
+    subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
+    orderImage: "assets/images/order_image.png",
   ),
   FriedChickenModel(
     headerName: "Fried Chicken",
@@ -35,5 +43,7 @@ final List<FriedChickenModel> friedModel = [
     name: "Combo Chicken Crispy",
     price: "\$ 10.15",
     type: "Burger combo",
+    subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
+    orderImage: "assets/images/order_image.png",
   ),
 ];
