@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:restaurant/constants.dart';
 import 'package:restaurant/core/utils/theme.dart';
 import 'package:restaurant/view/auth/authentication/login_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
@@ -40,7 +41,8 @@ class IntroScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Find the most delicious food\nwith the best quality and free delivery here',
-                    style: theme().textTheme.titleMedium,
+                    style:
+                        theme().textTheme.titleMedium!.copyWith(color: white),
                   ),
                 ],
               ),

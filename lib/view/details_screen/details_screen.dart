@@ -29,7 +29,7 @@ class DetailsScreen extends StatelessWidget {
             ],
           ),
           Positioned(
-            top: mediaQuery.height * 0.26,
+            top: mediaQuery.height * 0.24,
             left: 0,
             right: 0,
             child: Container(

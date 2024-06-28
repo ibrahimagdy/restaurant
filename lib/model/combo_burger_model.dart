@@ -4,6 +4,8 @@ class ComboBurgerModel {
   final String name;
   final String price;
   final String type;
+  final String subtitle;
+  final String orderImage;
 
   ComboBurgerModel({
     required this.headerName,
@@ -11,6 +13,8 @@ class ComboBurgerModel {
     required this.name,
     required this.price,
     required this.type,
+    required this.subtitle,
+    required this.orderImage,
   });
 }
 
@@ -21,6 +25,8 @@ final List<ComboBurgerModel> comboBgModel = [
     name: "Combo Tender Grill",
     price: "\$ 10.15",
     type: "Burger combo",
+    subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
+    orderImage: "assets/images/order_image.png",
   ),
   ComboBurgerModel(
     headerName: "Hot Burger Combo",
@@ -28,6 +34,8 @@ final List<ComboBurgerModel> comboBgModel = [
     name: "Combo Tender Grill",
     price: "\$ 10.15",
     type: "Burger combo",
+    subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
+    orderImage: "assets/images/order_image.png",
   ),
   ComboBurgerModel(
     headerName: "Hot Burger Combo",
@@ -35,5 +43,7 @@ final List<ComboBurgerModel> comboBgModel = [
     name: "Combo Tender Grill",
     price: "\$ 10.15",
     type: "Burger combo",
+    subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
+    orderImage: "assets/images/order_image.png",
   ),
 ];
