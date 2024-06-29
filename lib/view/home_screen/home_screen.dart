@@ -24,7 +24,6 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: mediaQuery.height * 0.015),
             const BestPartnersWidget(),
             SizedBox(height: mediaQuery.height * 0.2),
-            // const BestPartnersWidget(),
           ],
         ),
       ),

@@ -6,6 +6,7 @@ class ComboBurgerModel {
   final String type;
   final String subtitle;
   final String orderImage;
+  final String confirmOrderImage;
 
   ComboBurgerModel({
     required this.headerName,
@@ -15,6 +16,7 @@ class ComboBurgerModel {
     required this.type,
     required this.subtitle,
     required this.orderImage,
+    required this.confirmOrderImage,
   });
 }
 
@@ -27,6 +29,7 @@ final List<ComboBurgerModel> comboBgModel = [
     type: "Burger combo",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
     orderImage: "assets/images/order_image.png",
+    confirmOrderImage: "assets/images/confirm_order_img.png",
   ),
   ComboBurgerModel(
     headerName: "Hot Burger Combo",
@@ -36,6 +39,7 @@ final List<ComboBurgerModel> comboBgModel = [
     type: "Burger combo",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
     orderImage: "assets/images/order_image.png",
+    confirmOrderImage: "assets/images/confirm_order_img.png",
   ),
   ComboBurgerModel(
     headerName: "Combo BBQ Bacon",
@@ -45,5 +49,6 @@ final List<ComboBurgerModel> comboBgModel = [
     type: "Burger combo",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
     orderImage: "assets/images/order_image.png",
+    confirmOrderImage: "assets/images/confirm_order_img.png",
   ),
 ];

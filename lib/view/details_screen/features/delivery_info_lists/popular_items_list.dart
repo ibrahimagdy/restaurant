@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/functions/show_order_bottom_sheet.dart';
+import '../../../../model/best_partners_model.dart';
 import '../../../../model/popular_items_model.dart';
 import '../delivery_info_widgets/popular_items_widget.dart';
 
 class PopularItemsList extends StatelessWidget {
-  const PopularItemsList({super.key});
+  final BestPartnersModel restaurant;
+
+  const PopularItemsList({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,11 @@ class PopularItemsList extends StatelessWidget {
               item.subtitle,
               item.orderImage,
               item.price,
+              item.confirmOrderImage,
+              partnerName: restaurant.name,
+              partnerAddress: restaurant.address,
+              partnerRate: restaurant.rate,
+              partnerDistance: restaurant.distance,
             );
           },
           child: SizedBox(

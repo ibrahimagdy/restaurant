@@ -3,10 +3,13 @@ import 'package:restaurant/constants.dart';
 import 'package:restaurant/view/details_screen/features/review_info_widgets/users_review.dart';
 
 import '../../../core/utils/theme.dart';
+import '../../../model/best_partners_model.dart';
 import 'delivery_info_view.dart';
 
 class CustomTabView extends StatelessWidget {
-  const CustomTabView({super.key});
+  final BestPartnersModel restaurant;
+
+  const CustomTabView({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +28,11 @@ class CustomTabView extends StatelessWidget {
               Tab(text: "Review"),
             ],
           ),
-          const Expanded(
+          Expanded(
             child: TabBarView(
               children: [
-                DeliveryInfoView(),
-                UsersReview(),
+                DeliveryInfoView(restaurant: restaurant),
+                const UsersReview(),
               ],
             ),
           ),
