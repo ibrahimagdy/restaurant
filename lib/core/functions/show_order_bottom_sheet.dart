@@ -22,8 +22,8 @@ void showOrderBottomSheet(BuildContext context, String name, String subtitle,
 
       return StatefulBuilder(
         builder: (context, setState) {
-          return Container(
-            height: mediaQuery.height * 0.9,
+          return SizedBox(
+            height: mediaQuery.height * 0.95,
             width: double.infinity,
             child: Column(
               children: [
@@ -153,7 +153,7 @@ void showOrderBottomSheet(BuildContext context, String name, String subtitle,
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 40, left: 45),
                   child: Row(
@@ -167,7 +167,7 @@ void showOrderBottomSheet(BuildContext context, String name, String subtitle,
                             style: theme().textTheme.headlineSmall,
                           ),
                           Text(
-                            '\$$totalPrice',
+                            '\$${totalPrice.toStringAsFixed(2)}',
                             style: theme()
                                 .textTheme
                                 .headlineSmall!
@@ -175,11 +175,16 @@ void showOrderBottomSheet(BuildContext context, String name, String subtitle,
                           ),
                         ],
                       ),
-                      CustomButton(
-                        buttonText: "Add to Order",
-                        onTap: () {
-                          // Add your logic here
-                        },
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 50),
+                          child: CustomButton(
+                            buttonText: "Add to Order",
+                            onTap: () {
+                              Navigator.pushNamed(context, '');
+                            },
+                          ),
+                        ),
                       ),
                     ],
                   ),

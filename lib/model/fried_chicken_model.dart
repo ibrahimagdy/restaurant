@@ -22,7 +22,7 @@ final List<FriedChickenModel> friedModel = [
   FriedChickenModel(
     headerName: "Fried Chicken",
     image: "assets/images/fried.png",
-    name: "Combo Chicken Crispy",
+    name: "Chicken BBQ",
     price: "\$ 10.15",
     type: "Burger combo",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
@@ -40,7 +40,7 @@ final List<FriedChickenModel> friedModel = [
   FriedChickenModel(
     headerName: "Fried Chicken",
     image: "assets/images/fried.png",
-    name: "Combo Chicken Crispy",
+    name: "Combo BBQ Bacon",
     price: "\$ 10.15",
     type: "Burger combo",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
