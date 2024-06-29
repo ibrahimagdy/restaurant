@@ -27,7 +27,7 @@ final List<PopularItemsModel> popularItems = [
   ),
   PopularItemsModel(
     image: "assets/images/popular_image.png",
-    name: "Extreme cheese whopper JR",
+    name: "Singles BBQ bacon cheese burger",
     price: "\$ 5.99",
     type: "Burger",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
