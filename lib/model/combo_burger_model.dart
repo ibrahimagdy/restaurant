@@ -22,7 +22,7 @@ final List<ComboBurgerModel> comboBgModel = [
   ComboBurgerModel(
     headerName: "Hot Burger Combo",
     image: "assets/images/bg_combo.png",
-    name: "Combo Tender Grill",
+    name: "Combo Spicy Tender",
     price: "\$ 10.15",
     type: "Burger combo",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
@@ -38,7 +38,7 @@ final List<ComboBurgerModel> comboBgModel = [
     orderImage: "assets/images/order_image.png",
   ),
   ComboBurgerModel(
-    headerName: "Hot Burger Combo",
+    headerName: "Combo BBQ Bacon",
     image: "assets/images/bg_combo.png",
     name: "Combo Tender Grill",
     price: "\$ 10.15",
