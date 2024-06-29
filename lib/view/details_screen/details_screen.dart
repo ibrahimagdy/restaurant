@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant/constants.dart';
 import 'package:restaurant/view/details_screen/features/details_info.dart';
 
+import '../../model/best_partners_model.dart';
 import 'features/custom_tab_view.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -11,6 +12,7 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var args = ModalRoute.of(context)?.settings.arguments as BestPartnersModel;
     var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: white,
@@ -42,11 +44,13 @@ class DetailsScreen extends StatelessWidget {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: const Column(
+              child: Column(
                 children: [
-                  DetailsInfo(),
-                  Divider(thickness: 0.5),
-                  Expanded(child: CustomTabView()),
+                  DetailsInfo(restaurant: args),
+                  const Divider(thickness: 0.5),
+                  Expanded(
+                    child: CustomTabView(restaurant: args),
+                  ),
                 ],
               ),
             ),

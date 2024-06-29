@@ -7,7 +7,9 @@ import '../../../core/utils/theme.dart';
 import '../../../model/best_partners_model.dart';
 
 class DetailsInfo extends StatelessWidget {
-  const DetailsInfo({super.key});
+  final BestPartnersModel restaurant;
+
+  const DetailsInfo({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {

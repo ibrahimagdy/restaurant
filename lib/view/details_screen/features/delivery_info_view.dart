@@ -6,8 +6,12 @@ import 'package:restaurant/view/details_screen/features/delivery_info_lists/comb
 import 'package:restaurant/view/details_screen/features/delivery_info_lists/fried_chicken_list.dart';
 import 'package:restaurant/view/details_screen/features/delivery_info_lists/popular_items_list.dart';
 
+import '../../../model/best_partners_model.dart';
+
 class DeliveryInfoView extends StatelessWidget {
-  const DeliveryInfoView({super.key});
+  final BestPartnersModel restaurant;
+
+  const DeliveryInfoView({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,7 @@ class DeliveryInfoView extends StatelessWidget {
           SliverToBoxAdapter(
             child: SizedBox(
               height: mediaQuery.height * 0.27,
-              child: const PopularItemsList(),
+              child: PopularItemsList(restaurant: restaurant),
             ),
           ),
           const SliverToBoxAdapter(child: Divider(thickness: 0.5)),
@@ -41,7 +45,7 @@ class DeliveryInfoView extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(child: SizedBox(height: mediaQuery.height * 0.01)),
-          const ComboBurgerList(),
+          ComboBurgerList(restaurant: restaurant),
           SliverToBoxAdapter(child: SizedBox(height: mediaQuery.height * 0.02)),
           SliverToBoxAdapter(
             child: Row(
@@ -52,7 +56,7 @@ class DeliveryInfoView extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(child: SizedBox(height: mediaQuery.height * 0.01)),
-          const FriedChickenList(),
+          FriedChickenList(restaurant: restaurant),
         ],
       ),
     );

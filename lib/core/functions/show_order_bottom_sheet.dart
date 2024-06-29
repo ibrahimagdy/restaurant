@@ -2,10 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:restaurant/core/utils/theme.dart';
 
 import '../../constants.dart';
+import '../../view/order_screen/order_screen.dart';
 import '../widgets/custom_button.dart';
 
-void showOrderBottomSheet(BuildContext context, String name, String subtitle,
-    String orderImage, String price) {
+void showOrderBottomSheet(
+  BuildContext context,
+  String name,
+  String subtitle,
+  String orderImage,
+  String price,
+  String confirmOrderImage, {
+  String? partnerName,
+  String? partnerAddress,
+  String? partnerRate,
+  String? partnerDistance,
+}) {
   var mediaQuery = MediaQuery.of(context).size;
   showModalBottomSheet(
     context: context,
@@ -181,7 +192,22 @@ void showOrderBottomSheet(BuildContext context, String name, String subtitle,
                           child: CustomButton(
                             buttonText: "Add to Order",
                             onTap: () {
-                              Navigator.pushNamed(context, '');
+                              Navigator.pushNamed(
+                                context,
+                                OrderScreen.id,
+                                arguments: {
+                                  'name': name,
+                                  'size': selectedSize,
+                                  'quantity': quantity,
+                                  'totalPrice': totalPrice,
+                                  'orderImage': orderImage,
+                                  'confirmOrderImage': confirmOrderImage,
+                                  'partnerName': partnerName,
+                                  'partnerAddress': partnerAddress,
+                                  'partnerRate': partnerRate,
+                                  'partnerDistance': partnerDistance,
+                                },
+                              );
                             },
                           ),
                         ),

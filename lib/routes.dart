@@ -12,6 +12,7 @@ import 'package:restaurant/view/home_layout/home_layout.dart';
 import 'package:restaurant/view/home_screen/home_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
 import 'package:restaurant/view/ongoing_screen/ongoing_screen.dart';
+import 'package:restaurant/view/order_screen/order_screen.dart';
 import 'package:restaurant/view/profile_screen/profile_screen.dart';
 import 'package:restaurant/view/splash_screen/intro_screen.dart';
 import 'package:restaurant/view/splash_screen/splash_screen.dart';
@@ -36,4 +37,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   OngoingScreen.id: (context) => const OngoingScreen(),
   ProfileScreen.id: (context) => const ProfileScreen(),
   DetailsScreen.id: (context) => const DetailsScreen(),
+  OrderScreen.id: (context) => const OrderScreen(),
 };
