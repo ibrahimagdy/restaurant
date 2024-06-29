@@ -5,6 +5,7 @@ class PopularItemsModel {
   final String type;
   final String subtitle;
   final String orderImage;
+  final String confirmOrderImage;
 
   PopularItemsModel({
     required this.image,
@@ -13,6 +14,7 @@ class PopularItemsModel {
     required this.type,
     required this.subtitle,
     required this.orderImage,
+    required this.confirmOrderImage,
   });
 }
 
@@ -24,6 +26,7 @@ final List<PopularItemsModel> popularItems = [
     type: "Burger",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
     orderImage: "assets/images/order_image.png",
+    confirmOrderImage: "assets/images/confirm_order_img.png",
   ),
   PopularItemsModel(
     image: "assets/images/popular_image.png",
@@ -32,6 +35,7 @@ final List<PopularItemsModel> popularItems = [
     type: "Burger",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
     orderImage: "assets/images/order_image.png",
+    confirmOrderImage: "assets/images/confirm_order_img.png",
   ),
   PopularItemsModel(
     image: "assets/images/popular_image.png",
@@ -40,6 +44,7 @@ final List<PopularItemsModel> popularItems = [
     type: "Burger",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
     orderImage: "assets/images/order_image.png",
+    confirmOrderImage: "assets/images/confirm_order_img.png",
   ),
   PopularItemsModel(
     image: "assets/images/popular_image.png",
@@ -48,5 +53,6 @@ final List<PopularItemsModel> popularItems = [
     type: "Burger",
     subtitle: "A signature flame-grilled beef patty\ntopped with smoked bacon.",
     orderImage: "assets/images/order_image.png",
+    confirmOrderImage: "assets/images/confirm_order_img.png",
   ),
 ];

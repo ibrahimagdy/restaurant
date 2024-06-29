@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/functions/show_order_bottom_sheet.dart';
+import '../../../../model/best_partners_model.dart';
 import '../../../../model/fried_chicken_model.dart';
 import '../delivery_info_widgets/fried_chicken_widget.dart';
 
 class FriedChickenList extends StatelessWidget {
-  const FriedChickenList({super.key});
+  final BestPartnersModel restaurant;
+
+  const FriedChickenList({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,11 @@ class FriedChickenList extends StatelessWidget {
                 item.subtitle,
                 item.orderImage,
                 item.price,
+                item.confirmOrderImage,
+                partnerName: restaurant.name,
+                partnerAddress: restaurant.address,
+                partnerRate: restaurant.rate,
+                partnerDistance: restaurant.distance,
               );
             },
             child: FriedChickenWidget(item: item),
