@@ -52,10 +52,17 @@ class _EnterNewAddressScreenState extends State<EnterNewAddressScreen> {
                 CustomTextFormField(
                   context: context,
                   controller: addressController,
+                  hintText: 'Enter your address',
                   prefixIcon: SvgPicture.asset(
                     "assets/icons/address_icon.svg",
                     fit: BoxFit.scaleDown,
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Address is required";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: mediaQuery.height * 0.09),
                 CustomButton(

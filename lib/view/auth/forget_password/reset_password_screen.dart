@@ -57,6 +57,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   controller: passwordController,
                   hintText: 'New Password',
                   password: !isPasswordVisible,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Password is required';
+                    }
+                    if (value.length < 8) {
+                      return 'Password must be at least 8 characters long';
+                    }
+                    if (!value.contains(RegExp(r'[A-Z]')) ||
+                        !value.contains(RegExp(r'[a-z]'))) {
+                      return 'Password must contain both uppercase and lowercase letters';
+                    }
+                    return null;
+                  },
                   suffixIcon: IconButton(
                     icon: Icon(
                       isPasswordVisible
@@ -76,6 +89,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   controller: confirmPasswordController,
                   hintText: 'Confirm Password',
                   password: !isConfirmPasswordVisible,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please confirm your password';
+                    }
+                    if (value != passwordController.text) {
+                      return 'Passwords do not match';
+                    }
+                    return null;
+                  },
                   suffixIcon: IconButton(
                     icon: Icon(
                       isConfirmPasswordVisible

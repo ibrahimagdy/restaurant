@@ -82,12 +82,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   context: context,
                   controller: nameController,
                   hintText: 'Your name',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Name is required";
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 10),
                 CustomTextFormField(
                   context: context,
                   controller: emailController,
                   hintText: 'Username or Email',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Email is required";
+                    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                        .hasMatch(value)) {
+                      return "Enter a valid email";
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 10),
                 CustomTextFormField(
@@ -95,6 +110,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: passwordController,
                   hintText: "Password",
                   password: !isPasswordVisible,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Password is required";
+                    } else if (value.length < 6) {
+                      return "Password must be at least 6 characters";
+                    }
+                    return null;
+                  },
                   suffixIcon: IconButton(
                     icon: Icon(
                       isPasswordVisible

@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: greyColor,
+      backgroundColor: secondGreyColor,
       body: SingleChildScrollView(
         child: Column(
           children: [

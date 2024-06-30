@@ -54,6 +54,15 @@ class _PasswordRecoveryScreenState extends State<PasswordRecoveryScreen> {
                   context: context,
                   controller: emailController,
                   hintText: 'Email',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Email is required';
+                    }
+                    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                      return 'Enter a valid email address';
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: mediaQuery.height * 0.03),
                 CustomButton(

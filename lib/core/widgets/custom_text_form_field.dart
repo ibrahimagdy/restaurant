@@ -15,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
   String? hintText;
   Widget? prefixIcon;
   Widget? suffixIcon;
+  final String? Function(String?)? validator;
 
   CustomTextFormField({
     super.key,
@@ -29,36 +30,32 @@ class CustomTextFormField extends StatelessWidget {
     this.hintText,
     this.prefixIcon,
     this.suffixIcon,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        controller: value == null ? controller : null,
-        initialValue: value,
-        obscureText: password ?? false,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return "This Field Is Required";
-          }
-          return null;
-        },
-        keyboardType:
-            number == true ? TextInputType.number : TextInputType.text,
-        decoration: InputDecoration(
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-          hintText: hintText,
-          contentPadding: length == 0 ? null : EdgeInsets.only(bottom: length),
-          labelText: labelText,
-          floatingLabelAlignment: FloatingLabelAlignment.start,
-          fillColor: greyColor,
-          filled: true,
-          hintStyle: theme().textTheme.titleSmall,
-          border: buildBorder(),
-          focusedBorder: buildBorder(),
-          enabledBorder: buildBorder(),
-        ));
+      controller: value == null ? controller : null,
+      initialValue: value,
+      obscureText: password ?? false,
+      validator: validator,
+      keyboardType: number == true ? TextInputType.number : TextInputType.text,
+      decoration: InputDecoration(
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        hintText: hintText,
+        contentPadding: length == 0 ? null : EdgeInsets.only(bottom: length),
+        labelText: labelText,
+        floatingLabelAlignment: FloatingLabelAlignment.start,
+        fillColor: greyColor,
+        filled: true,
+        hintStyle: theme().textTheme.titleSmall,
+        border: buildBorder(),
+        focusedBorder: buildBorder(),
+        enabledBorder: buildBorder(),
+      ),
+    );
   }
 
   OutlineInputBorder buildBorder() {
