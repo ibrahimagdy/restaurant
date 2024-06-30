@@ -32,7 +32,7 @@ class OrderScreen extends StatelessWidget {
             SizedBox(height: mediaQuery.height * 0.01),
             const AddVoucherWidget(),
             SizedBox(height: mediaQuery.height * 0.01),
-            const PaymentWidget(),
+            PaymentWidget(args: args),
             Container(
               color: white,
               height: mediaQuery.height * 0.05,

@@ -10,7 +10,9 @@ import '../../../core/utils/theme.dart';
 import '../../../core/widgets/custom_button.dart';
 
 class PaymentWidget extends StatefulWidget {
-  const PaymentWidget({super.key});
+  final Map<String, dynamic> args;
+
+  const PaymentWidget({super.key, required this.args});
 
   @override
   State<PaymentWidget> createState() => _PaymentWidgetState();
@@ -103,10 +105,17 @@ class _PaymentWidgetState extends State<PaymentWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: CustomButton(
-                buttonText: 'Submit',
-                onTap: () {
-                  showCashPaymentDialog(context);
-                }),
+              buttonText: 'Submit',
+              onTap: () {
+                orderModel.startOngoingOrder(
+                  widget.args['name'] ?? '',
+                  widget.args['partnerName'] ?? '',
+                  widget.args['partnerAddress'] ?? '',
+                  DateTime.now(),
+                );
+                showCashPaymentDialog(context);
+              },
+            ),
           ),
         ],
       ),

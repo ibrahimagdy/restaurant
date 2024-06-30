@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restaurant/constants.dart';
 import 'package:restaurant/core/utils/theme.dart';
-import 'package:restaurant/view/home_screen/home_screen.dart';
+import 'package:restaurant/view/home_layout/home_layout.dart';
 
 void showCashPaymentDialog(BuildContext context) {
   var mediaQuery = MediaQuery.of(context).size;
@@ -29,7 +29,7 @@ void showCashPaymentDialog(BuildContext context) {
           SizedBox(height: mediaQuery.height * 0.02),
           TextButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, HomeScreen.id);
+              Navigator.pushReplacementNamed(context, HomeLayout.id);
             },
             child: Text(
               'KEEP BROWSING',
