@@ -65,7 +65,8 @@ class _CustomTopModalSheetState extends State<CustomTopModalSheet>
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const SearchScreen()),
                   );
                 },
                 child: AbsorbPointer(
