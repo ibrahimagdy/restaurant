@@ -6,6 +6,7 @@ import 'package:restaurant/core/widgets/custom_text_form_field.dart';
 import 'package:restaurant/model/best_partners_model.dart';
 
 class SearchScreen extends StatefulWidget {
+  static const String id = 'SearchScreen';
   const SearchScreen({super.key});
 
   @override
