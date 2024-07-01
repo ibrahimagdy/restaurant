@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant/constants.dart';
 import 'package:restaurant/core/services/provider.dart';
-import 'package:restaurant/view/ongoing_screen/features/no_order_receive.dart';
 
 import '../../../core/utils/theme.dart';
+import 'no_order_receive.dart';
 
 class DeliveryDestinationDetails extends StatelessWidget {
   const DeliveryDestinationDetails({super.key});

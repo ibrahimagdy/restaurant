@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:restaurant/constants.dart';
 import 'package:restaurant/view/home_screen/home_screen.dart';
-import 'package:restaurant/view/ongoing_screen/ongoing_screen.dart';
 import 'package:restaurant/view/profile_screen/profile_screen.dart';
+
+import '../delivery_screen/delivery_screen.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String id = 'HomeLayout';
@@ -19,7 +20,7 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   final List<Widget> screens = [
     const HomeScreen(),
-    const OngoingScreen(),
+    const DeliveryScreen(),
     const ProfileScreen(),
   ];
 
