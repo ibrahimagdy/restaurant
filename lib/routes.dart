@@ -7,11 +7,11 @@ import 'package:restaurant/view/auth/forget_password/verify_identity_screen.dart
 import 'package:restaurant/view/auth/location/current_location_screen.dart';
 import 'package:restaurant/view/auth/location/enter_new_address_screen.dart';
 import 'package:restaurant/view/auth/phone_number/phone_number_screen.dart';
+import 'package:restaurant/view/delivery_screen/delivery_screen.dart';
 import 'package:restaurant/view/details_screen/details_screen.dart';
 import 'package:restaurant/view/home_layout/home_layout.dart';
 import 'package:restaurant/view/home_screen/home_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
-import 'package:restaurant/view/ongoing_screen/ongoing_screen.dart';
 import 'package:restaurant/view/order_screen/order_screen.dart';
 import 'package:restaurant/view/profile_screen/profile_screen.dart';
 import 'package:restaurant/view/splash_screen/intro_screen.dart';
@@ -34,7 +34,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
   HomeLayout.id: (context) => const HomeLayout(),
   HomeScreen.id: (context) => const HomeScreen(),
-  OngoingScreen.id: (context) => const OngoingScreen(),
+  DeliveryScreen.id: (context) => const DeliveryScreen(),
   ProfileScreen.id: (context) => const ProfileScreen(),
   DetailsScreen.id: (context) => const DetailsScreen(),
   OrderScreen.id: (context) => const OrderScreen(),
