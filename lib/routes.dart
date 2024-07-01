@@ -10,6 +10,7 @@ import 'package:restaurant/view/auth/phone_number/phone_number_screen.dart';
 import 'package:restaurant/view/delivery_screen/delivery_screen.dart';
 import 'package:restaurant/view/details_screen/details_screen.dart';
 import 'package:restaurant/view/home_layout/home_layout.dart';
+import 'package:restaurant/view/home_screen/features/search_view.dart';
 import 'package:restaurant/view/home_screen/home_screen.dart';
 import 'package:restaurant/view/onboarding_screens/onboarding_screens.dart';
 import 'package:restaurant/view/order_screen/order_screen.dart';
@@ -34,6 +35,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
   HomeLayout.id: (context) => const HomeLayout(),
   HomeScreen.id: (context) => const HomeScreen(),
+  SearchScreen.id: (context) => const SearchScreen(),
   DeliveryScreen.id: (context) => const DeliveryScreen(),
   ProfileScreen.id: (context) => const ProfileScreen(),
   DetailsScreen.id: (context) => const DetailsScreen(),
