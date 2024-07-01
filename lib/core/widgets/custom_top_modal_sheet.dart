@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:restaurant/core/widgets/custom_button.dart';
+import 'package:restaurant/core/widgets/custom_search_bar.dart';
 
 import '../../constants.dart';
-import '../../view/home_screen/features/search_view.dart';
 import '../utils/theme.dart';
 import 'category_search_filter.dart';
-import 'custom_text_form_field.dart';
 import 'price_search_filter.dart';
 import 'sort_by_search_filter.dart';
 
@@ -28,7 +27,6 @@ class CustomTopModalSheet extends StatefulWidget {
 
 class _CustomTopModalSheetState extends State<CustomTopModalSheet>
     with SingleTickerProviderStateMixin {
-  TextEditingController searchController = TextEditingController();
   late TabController tabController;
 
   @override
@@ -59,29 +57,7 @@ class _CustomTopModalSheetState extends State<CustomTopModalSheet>
         child: Column(
           children: [
             SizedBox(height: mediaQuery.height * 0.08),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SearchScreen()),
-                  );
-                },
-                child: AbsorbPointer(
-                  child: CustomTextFormField(
-                    context: context,
-                    controller: searchController,
-                    hintText: 'Search on Coody',
-                    prefixIcon: SvgPicture.asset(
-                      "assets/icons/address_icon.svg",
-                      fit: BoxFit.scaleDown,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            const CustomSearchBar(),
             SizedBox(height: mediaQuery.height * 0.03),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
