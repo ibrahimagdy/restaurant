@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'features/delivery_destnation_details.dart';
 import 'features/delivery_order_details.dart';
 
-class OngoingScreen extends StatelessWidget {
+class DeliveryScreen extends StatelessWidget {
   static const String id = 'OngoingScreen';
 
-  const OngoingScreen({super.key});
+  const DeliveryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
